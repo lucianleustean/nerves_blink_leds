@@ -36,7 +36,7 @@ defmodule BlinkLeds.Mixfile do
     [extra_applications: [:logger]]
   end
   def application(_target) do
-    [mod: {BlinkLeds.Application, []},
+    [mod: {BlinkLeds, []},
      extra_applications: [:logger]]
   end
 
@@ -50,7 +50,7 @@ defmodule BlinkLeds.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   def deps do
-    [{:nerves, "~> 0.5.0", runtime: false}] ++
+    [{:nerves, "~> 0.5.1", runtime: false}] ++
     deps(@target)
   end
 
@@ -58,7 +58,8 @@ defmodule BlinkLeds.Mixfile do
   def deps("host"), do: []
   def deps(target) do
     [{:nerves_runtime, "~> 0.1.0"},
-     {:"nerves_system_#{target}", "~> 0.10", runtime: false}]
+     {:"nerves_system_#{target}", "~> 0.12.1", runtime: false},
+     {:elixir_ale, "~> 1.0"}]
   end
 
   # We do not invoke the Nerves Env when running on the Host
